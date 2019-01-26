@@ -1,6 +1,6 @@
 package com.example.entities
 
-import java.util.*
+import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
@@ -11,9 +11,7 @@ class Users (
         @Column
         var rating: Int,
         @Column
-        @Temporal(TemporalType.TIME)
-        val create_date: Date,
+        val create_date: LocalDateTime,
         @Column
-        @Temporal(TemporalType.TIME)
-        var update_date: Date
+        var update_date: LocalDateTime
 ) : AbstractEntity<Int>()

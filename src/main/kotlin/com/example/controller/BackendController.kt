@@ -23,7 +23,7 @@ class BackendController @Autowired constructor(private val usersRepository : Use
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     fun createUser(@RequestParam name : String) : String{
-        val user = Users(name,0, Date(),Date())
+        val user = Users(name,0, LocalDateTime.now(),LocalDateTime.now())
         usersRepository.save(user)
         return "User with name $name has been created"
     }
@@ -48,7 +48,7 @@ class BackendController @Autowired constructor(private val usersRepository : Use
         val user = usersRepository.getOne(userid)
        user.let {
            user.rating = rating
-           user.update_date = Date()
+           user.update_date = LocalDateTime.now()
            usersRepository.save(user)
            return "Rating for user has been set to $rating"
        }
